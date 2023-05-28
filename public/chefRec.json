@@ -1,0 +1,20 @@
+[
+  {
+    "_id": "1",
+    "name": "Caesar Salad",
+    "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-1-370x247.jpg",
+    "ingredients": "Lettuce, Eggs, Parmesan Cheese, Chicken Breast Fillets."
+  },
+  {
+    "_id": "2",
+    "name": "Margherita Pizza",
+    "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-1-370x247.jpg",
+    "ingredients": "Pizza Dough, Tomato Sauce, Mozzarella Cheese, Fresh Basil Leaves"
+  },
+  {
+    "_id": "3",
+    "name": "Chocolate Chip Cookies",
+    "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-1-370x247.jpg",
+    "ingredients": "Butter, Brown Sugar, Granulated Sugar, Eggs, Vanilla Extract, All-Purpose Flour, Baking Soda, Salt, Chocolate Chips"
+  }
+]
