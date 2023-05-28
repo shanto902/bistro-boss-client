@@ -14,7 +14,7 @@ const NavBar = () => {
         </li>
         <li><a>Item 3</a></li></>
     return (
-        <div className="navbar fixed z-10 bg-opacity-50 text-white bg-gray-900 max-w-7xl">
+        <div className="navbar fixed z-30 bg-opacity-50 text-white bg-gray-900 max-w-7xl">
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -26,7 +26,7 @@ const NavBar = () => {
         }
       </ul>
     </div>
-    <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+    <a className="btn btn-ghost normal-case text-xl">Bistro Boss</a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
