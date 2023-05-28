@@ -31,13 +31,27 @@ const Category = () => {
    <section>
     <SectionTitle heading="Order Online" subHeading="From 11:00am to 10:00pm"/>
      <Swiper
-      slidesPerView={4}
-      spaceBetween={24}
+      slidesPerView={2}
+      spaceBetween={10}
       pagination={{
         clickable: true,
       }}
+      breakpoints={{
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 40,
+        },
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 50,
+        },
+      }}
       modules={[Pagination]}
-      className="mySwiper"
+      className="mySwiper sm:flex-col"
     >
         {MyCustomSwiper(slide1, "Salads")}
         {MyCustomSwiper(slide2, "Soups")}
