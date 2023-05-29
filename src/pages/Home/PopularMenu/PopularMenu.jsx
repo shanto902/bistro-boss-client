@@ -12,7 +12,7 @@ const PopularMenu = () => {
             setMenu(popularItems)})
     },[])
     return (
-        <section className="mb-12">
+        <section className="mb-12 2xl:px-52 xl:px-16 px-10">
             <SectionTitle heading="From our Menu" subHeading="Popular Items"/>
             <div className=" grid md:grid-cols-2 grid-cols-1 gap-10">
                 {

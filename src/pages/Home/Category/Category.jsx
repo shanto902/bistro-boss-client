@@ -17,18 +17,19 @@ import SectionTitle from "../../components/SectionTitle/SectionTitle";
 
 const Category = () => {
   const MyCustomSwiper = (img, title) => (
-    <SwiperSlide className="mb-10">
+    <SwiperSlide className="mb-10 ">
       <div
         style={{ backgroundImage: `url(${img})`}}
         className=" display flex min-h-[450px] bg-cover w-full justify-center "
       >
-        <h2 className=" uppercase self-center mt-64 drop-shadow-lg text-4xl text-white ">{title}</h2>
+        <h2 className="relative font-cinzel uppercase self-center mt-64 text-4xl text-white z-10">{title}</h2>
+        <h2 className="absolute font-cinzel uppercase self-center mt-64 drop-shadow-lg text-4xl text-black bottom-[16.6%] ">{title}</h2>
       </div>
     </SwiperSlide>
   );
 
   return (
-   <section>
+   <section className="px-10">
     <SectionTitle heading="Order Online" subHeading="From 11:00am to 10:00pm"/>
      <Swiper
       slidesPerView={2}
