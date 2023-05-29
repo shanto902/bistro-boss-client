@@ -116,7 +116,7 @@
         "name": "Roast Duck Breast",
         "recipe": "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce",
         "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-4-370x247.jpg",
-        "category": "dessert",
+        "category": "deserts",
         "price": 14.5
     },
     {
@@ -140,7 +140,7 @@
         "name": "Chicken and Walnut Salad",
         "recipe": "Pan roasted pork belly with gratin potato, braised Savoy cabbage, apples, thyme and calvados jus",
         "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-3-370x247.jpg",
-        "category": "dessert",
+        "category": "deserts",
         "price": 13.5
     },
     {
@@ -188,7 +188,7 @@
         "name": "Fish Parmentier",
         "recipe": "Sautéed breaded veal escalope with watercress, lemon and veal jus.",
         "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-1-370x247.jpg",
-        "category": "dessert",
+        "category": "deserts",
         "price": 9.5
     },
     {
@@ -204,7 +204,7 @@
         "name": "Chicken and Walnut Salad",
         "recipe": "Pan roasted pork belly with gratin potato, braised Savoy cabbage, apples, thyme and calvados jus",
         "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-3-370x247.jpg",
-        "category": "dessert",
+        "category": "deserts",
         "price": 13.5
     },
     {
@@ -212,7 +212,7 @@
         "name": "Escalope de Veau",
         "recipe": "Pan roasted haddock fillet wrapped in smoked French bacon with pea purée and tomato and chive vinaigrette",
         "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-2-370x247.jpg",
-        "category": "dessert",
+        "category": "deserts",
         "price": 12.5
     },
     {
