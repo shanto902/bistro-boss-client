@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useMenu from "../../../hooks/useMenu";
 import MenuItem from "../../Shared/MenuItem/MenuItem";
 
@@ -12,9 +13,9 @@ const MenuCategory = ({ category }) => {
         ))}
       </div>
       <div className="flex justify-center mt-6">
-        <button className="btn bg-white text-black border-0 border-b-4 hover:text-white font-medium">
+        <Link to={`/our-shop/${category}`} className="btn bg-white text-black border-0 border-b-4 hover:text-white font-medium">
           Order Your Favorite Food
-        </button>
+        </Link>
       </div>
     </section>
   );
