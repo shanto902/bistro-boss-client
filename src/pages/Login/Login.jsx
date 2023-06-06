@@ -3,10 +3,14 @@ import bgImage from "../../assets/others/authentication.png";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
-  LoadCanvasTemplateNoReload,
   validateCaptcha,
 } from "react-simple-captcha";
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import Swal from 'sweetalert2'
+
 
 const Login = () => {
   const captchaRef = useRef();
@@ -14,22 +18,51 @@ const Login = () => {
     loadCaptchaEnginge(6);
   }, []);
 
+  const { signIn } = useContext(AuthContext);
+
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
+
+    const value = captchaRef.current.value;
+    console.log(value);
+
+    if (validateCaptcha(value) == true) {
+      signIn(email, password).then((result) => {
+        Swal.fire(
+          'Success',
+          'User Logged in Successfully',
+          'success'
+        )
+        const user = result.user;
+        console.log(user);
+      }).catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        Swal.fire(
+          `Error ${errorCode}`,
+          `${errorMessage}`,
+          'error'
+        )
+       
+      });
+    }
+    else {
+      Swal.fire(
+        'Captcha Error',
+        'Please Recheck Captcha',
+        'error'
+      )
+    }
   };
-  const handleValidateCaptcha = () => {
-   const value = captchaRef.current.value;
-   console.log(value)
 
-   if (validateCaptcha(value)==true) {
-    alert('Captcha Matched');
-}
-
-  }
   return (
+   <>
+   <Helmet>
+        <title>Bistro Boss | Login</title>
+      </Helmet>
     <div
       className="hero min-h-screen "
       style={{ backgroundImage: `url(${bgImage})` }}
@@ -66,18 +99,12 @@ const Login = () => {
               </div>
 
               <div className="form-control">
-                <label className="label">
+                <label className="label mt-2">
                   <LoadCanvasTemplate />
                 </label>
-                <button
-                  onClick={handleValidateCaptcha}
-                  className="btn btn-outline btn-xs "
-                >
-                  {" "}
-                  Validate{" "}
-                </button>
+              
                 <input
-                ref={captchaRef}
+                  ref={captchaRef}
                   type="text"
                   name="captcha"
                   placeholder="Type the text above"
@@ -99,7 +126,9 @@ const Login = () => {
 
                 <p className="text-[#D1A054] text-center mt-8">
                   New here?{" "}
-                  <span className=" font-bold">Create a New Account</span>
+                  <Link to="/signup">
+                    <span className=" font-bold">Create a New Account</span>
+                  </Link>
                 </p>
 
                 <p className=" text-center text-[#444444] mt-8">
@@ -112,7 +141,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div></>
   );
 };
 
