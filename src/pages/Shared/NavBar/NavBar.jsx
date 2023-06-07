@@ -1,17 +1,20 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { FaShoppingCart } from "react-icons/fa";
+import useCart from "../../../hooks/useCart";
 
 const NavBar = () => {
-  const {user, logOut} = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  const [cart] = useCart();
 
   const handleLogOut = () => {
     logOut()
-    .then(()=> {
-      console.log("user logged out")
-    })
-    .catch (error => console.log(error))
-  }
+      .then(() => {
+        console.log("user logged out");
+      })
+      .catch((error) => console.log(error));
+  };
   const navOptions = (
     <>
       <li>
@@ -29,31 +32,51 @@ const NavBar = () => {
       <li>
         <Link to="/our-shop/salad">Our Shop</Link>
       </li>
-      
-      {
-        user ? <>
-        <button onClick={handleLogOut} className=" btn btn-ghost "> Log Out</button> </> : <> 
-        <li>
-        <Link to="/login">Login</Link>
-      </li>
-      </>
 
-      }
+      <li  >
+      <Link to="/our-shop/salad"><FaShoppingCart className="relative" /><div className="absolute left-6 top-8 badge bg-red-700 badge-sm"> {
+      cart?.length || 0 } </div></Link>
+  
+</li>
+
+     
+
+      {user ? (
+        <>
+          <button onClick={handleLogOut} className=" btn btn-ghost uppercase font-extrabold text-xl mx-3 ">
+            {" "}
+            Log Out
+          </button>
+          <div className="avatar">
+            <div className="w-12 h-12 rounded-full">
+              {user.photoURL ? (
+                <img src={user.photoURL} />
+              ) : (
+                <img src="https://static.vecteezy.com/system/resources/previews/001/840/618/original/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg" />
+              )}
+            </div>
+          </div>{" "}
+        </>
+      ) : (
+        <>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        </>
+      )}
     </>
   );
   return (
     <div className="navbar h-[130px] fixed z-50 bg-opacity-50 text-white bg-gray-900 flex justify-between">
-       <div className="text-start btn btn-ghost">
-          <a className=" normal-case">
-            <span className=" text-3xl font-black font-cinzel">
-              Bistro Boss
-            </span>
-            <br />
-            <span className=" font-bold text-2xl font-cinzel tracking-[0.38em]">
-              Restaurant
-            </span>
-          </a>
-        </div>
+      <div className="text-start btn btn-ghost">
+        <a className=" normal-case">
+          <span className=" text-3xl font-black font-cinzel">Bistro Boss</span>
+          <br />
+          <span className=" font-bold text-2xl font-cinzel tracking-[0.38em]">
+            Restaurant
+          </span>
+        </a>
+      </div>
       <div className=" place-content-end">
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -80,10 +103,11 @@ const NavBar = () => {
             {navOptions}
           </ul>
         </div>
-       
       </div>
       <div className=" hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 uppercase font-extrabold text-xl ">{navOptions}</ul>
+        <ul className="menu menu-horizontal px-1 uppercase font-extrabold text-xl ">
+          {navOptions}
+        </ul>
       </div>
     </div>
   );

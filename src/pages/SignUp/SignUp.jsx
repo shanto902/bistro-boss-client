@@ -1,25 +1,41 @@
 import loginImage from "../../assets/others/authentication2.png";
 import bgImage from "../../assets/others/authentication.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
-  const {createUser} = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const {createUser, updateUserProfile } = useContext(AuthContext);
 
   const onSubmit = (data) => {
     createUser(data.email,data.password)
     .then(result => {
       const loggedUser = result.user;
       console.log(loggedUser);
+      updateUserProfile(data.name, data.photoURL)
+      .then(()=>{
+        console.log('User profile Updated')
+        reset();
+        Swal.fire({
+          icon: 'success',
+          title: 'Profile Updated Successfully'
+        })
+        navigate('/');
+
+      })
+      .catch(error => console.log(error))
     })
   };
 
@@ -52,6 +68,23 @@ const SignUp = () => {
                   {...register("name", { required: true })}
                 />
                 {errors.name && (
+                  <span className=" text-red-600 mt-2">
+                    Please Enter your Name
+                  </span>
+                )}
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Photo</span>
+                </label>
+                <input
+                  type="text"
+                
+                  placeholder="Enter PhotoURL here"
+                  className="input input-bordered"
+                  {...register("photoURL", { required: true })}
+                />
+                {errors.photoURL && (
                   <span className=" text-red-600 mt-2">
                     Please Enter your Name
                   </span>
