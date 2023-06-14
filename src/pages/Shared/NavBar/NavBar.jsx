@@ -34,7 +34,7 @@ const NavBar = () => {
       </li>
 
       <li  >
-      <Link to="/our-shop/salad"><FaShoppingCart className="relative" /><div className="absolute left-6 top-8 badge bg-red-700 badge-sm"> {
+      <Link to="/dashboard/my-cart"><FaShoppingCart className="relative" /><div className="absolute left-6 top-8 badge bg-red-700 badge-sm"> {
       cart?.length || 0 } </div></Link>
   
 </li>
